@@ -45,10 +45,8 @@ public class BasketService {
     }
 
     private Double getDefaultPriceOfProduct(List<Product> products, ProductCode code) {
-        return products.stream()
-                .filter(product -> product.getCode().equals(code))
+        return products.stream().mapToDouble(Product::getDefaultPrice)
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Producto no encontrado con el código: " + code))
-                .getDefaultPrice();
+                .orElseThrow(() -> new NoSuchElementException("Precio de producto no encontrado con el código: " + code));
     }
 }
