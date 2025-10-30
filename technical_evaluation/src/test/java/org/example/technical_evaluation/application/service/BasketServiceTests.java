@@ -1,6 +1,5 @@
 package org.example.technical_evaluation.application.service;
 
-import org.example.technical_evaluation.application.service.BasketService;
 import org.example.technical_evaluation.domain.model.Coffee;
 import org.example.technical_evaluation.domain.model.GreenTea;
 import org.example.technical_evaluation.domain.model.Strawberry;

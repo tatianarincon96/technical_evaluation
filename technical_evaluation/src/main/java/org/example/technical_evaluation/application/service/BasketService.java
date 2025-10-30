@@ -25,9 +25,9 @@ public class BasketService {
 
     public double calculateTotalPrice() {
         ProductCode[] productCodes = ProductCode.values();
-        ProductCode[] findCodesInBasket = (ProductCode[]) Arrays.stream(productCodes)
+        List<ProductCode> findCodesInBasket = Arrays.stream(productCodes)
                 .filter(code -> this.products.stream()
-                        .anyMatch(product -> product.getCode().equals(code))).toArray();
+                        .anyMatch(product -> product.getCode().equals(code))).toList();
 
         Double totalPrice = 0.0;
         for (ProductCode code : findCodesInBasket) {
@@ -45,8 +45,10 @@ public class BasketService {
     }
 
     private Double getDefaultPriceOfProduct(List<Product> products, ProductCode code) {
-        return products.stream().mapToDouble(Product::getDefaultPrice)
+        return products.stream()
+                .filter(product -> product.getCode().equals(code))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Precio de producto no encontrado con el código: " + code));
+                .orElseThrow(() -> new NoSuchElementException("Producto no encontrado con el código: " + code))
+                .getDefaultPrice();
     }
 }
