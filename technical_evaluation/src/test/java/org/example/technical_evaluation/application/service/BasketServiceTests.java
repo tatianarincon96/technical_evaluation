@@ -1,4 +1,4 @@
-package org.example.technical_evaluation.services;
+package org.example.technical_evaluation.application.service;
 
 import org.example.technical_evaluation.application.service.BasketService;
 import org.example.technical_evaluation.domain.model.Coffee;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.*;
 import java.util.List;
 
 
-public class CheckOutServiceTests {
+public class BasketServiceTests {
     BasketService basketService;
     GreenTea greenTea;
     Strawberry strawberry;
